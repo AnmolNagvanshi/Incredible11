@@ -18,12 +18,12 @@ public class Home extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfanapp.MESSAGE";
 
-    /** URL for earthquake data from the USGS dataset */
+    /** URL for fixture data from */
     private static final String WEB_REQUEST_URL =
             "https://d11api.000webhostapp.com/data.php";
 
     /** Adapter for the list of fixtures */
-    private FixtureAdapter mAdapter;
+    private FixtureAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +32,22 @@ public class Home extends AppCompatActivity {
 
 
         // Find a reference to the {@link ListView} in the layout
-        ListView fixtureListView = (ListView) findViewById(R.id.list);
+        ListView fixtureListView = findViewById(R.id.list);
 
         // Create a new adapter that takes an empty list of earthquakes as input
-        mAdapter = new FixtureAdapter(this, new ArrayList<Fixture>());
+        adapter = new FixtureAdapter(this, new ArrayList<Fixture>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
-        fixtureListView.setAdapter(mAdapter);
+        fixtureListView.setAdapter(adapter);
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
-        // to open a website with more information about the selected earthquake.
+        // to open a website with more information about the selected fixture.
         fixtureListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Fixture currentFixture = mAdapter.getItem(position);
+                Fixture currentFixture = adapter.getItem(position);
 
                 Intent intent = new Intent(Home.this, PLayerSelection.class);
                 String homeTeam = currentFixture.getTeam1();
@@ -82,10 +82,10 @@ public class Home extends AppCompatActivity {
      * update the UI with the list of earthquakes in the response.
      *
      * AsyncTask has three generic parameters: the input type, a type used for progress updates, and
-     * an output type. Our task will take a String URL, and return an Earthquake. We won't do
-     * progress updates, so the second generic is just Void.
+     * an output type. This task will take a String URL, and return a Fixture. Not providing,
+     * progress updates,so the second generic is just Void.
      *
-     * We'll only override two of the methods of AsyncTask: doInBackground() and onPostExecute().
+     * Only overriding two of the methods of AsyncTask: doInBackground() and onPostExecute().
      * The doInBackground() method runs on a background thread, so it can run long-running code
      * (like network activity), without interfering with the responsiveness of the app.
      * Then onPostExecute() is passed the result of doInBackground() method, but runs on the
@@ -95,7 +95,7 @@ public class Home extends AppCompatActivity {
 
         /**
          * This method runs on a background thread and performs the network request.
-         * We should not update the UI from a background thread, so we return a list of
+         * We should not update the UI from a background thread, so return a list of
          * {@link Fixture}s as the result.
          */
         @Override
@@ -113,12 +113,12 @@ public class Home extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Fixture> data) {
             // Clear the adapter of previous fixture data
-            mAdapter.clear();
+            adapter.clear();
 
             // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
             // data set. This will trigger the ListView to update.
             if (data != null && !data.isEmpty()) {
-                mAdapter.addAll(data);
+                adapter.addAll(data);
             }
         }
     }

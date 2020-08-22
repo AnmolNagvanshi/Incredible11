@@ -3,6 +3,7 @@ package com.example.anmolnagvanshi.incredible11;
 import android.content.Context;
 
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,19 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-
-
-
-
-
 /**
- * An {@link FixtureAdapter} knows how to create a list item layout for each earthquake
+ * An {@link FixtureAdapter} knows how to create a list item layout for each fixture
  * in the data source (a list of {@link Fixture} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
@@ -30,27 +22,23 @@ import java.util.List;
  */
 public class FixtureAdapter extends ArrayAdapter<Fixture> {
 
-
-
-
-
-
     /**
      * Constructs a new {@link FixtureAdapter}.
      *
      * @param context of the app
-     * @param fixtures is the list of earthquakes, which is the data source of the adapter
+     * @param fixtures is the list of fixtures, which is the data source of the adapter
      */
     public FixtureAdapter(Context context, List<Fixture> fixtures) {
         super(context, 0, fixtures);
     }
 
     /**
-     * Returns a list item view that displays information about the earthquake at the given position
-     * in the list of earthquakes.
+     * Returns a list item view that displays information about the fixture at the given position
+     * in the list of fixtures.
      */
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
         View listItemView = convertView;
@@ -85,31 +73,4 @@ public class FixtureAdapter extends ArrayAdapter<Fixture> {
         return listItemView;
     }
 
-
-
-
-    /**
-     * Return the formatted magnitude string showing 1 decimal place (i.e. "3.2")
-     * from a decimal magnitude value.
-     */
-    private String formatMagnitude(double magnitude) {
-        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
-        return magnitudeFormat.format(magnitude);
-    }
-
-    /**
-     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
-     */
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-        return dateFormat.format(dateObject);
-    }
-
-    /**
-     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
-     */
-    private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
-    }
 }

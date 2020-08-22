@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class FixtureRecycleAdapter extends RecyclerView.Adapter<FixtureRecycleAdapter.FixtureViewHolder> {
+public class FixtureRecycleAdapter extends
+        RecyclerView.Adapter<FixtureRecycleAdapter.FixtureViewHolder> {
 
     private static final String TAG = FixtureRecycleAdapter.class.getName();
     private final ListItemClickListener mOnClickListener;
@@ -34,7 +35,6 @@ public class FixtureRecycleAdapter extends RecyclerView.Adapter<FixtureRecycleAd
         TextView awayTeam;
         ImageView homeTeamImage;
         ImageView awayTeamImage;
-
 
         public FixtureViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,9 +64,6 @@ public class FixtureRecycleAdapter extends RecyclerView.Adapter<FixtureRecycleAd
     }
 
 
-
-
-
     @NonNull
     @Override
     public FixtureViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
@@ -87,19 +84,13 @@ public class FixtureRecycleAdapter extends RecyclerView.Adapter<FixtureRecycleAd
     public void onBindViewHolder(@NonNull FixtureViewHolder fixtureViewHolder, int i) {
         Fixture currentFixture = mFixtures.get(i);
 
-
         fixtureViewHolder.homeTeam.setText(currentFixture.getTeam1());
         fixtureViewHolder.awayTeam.setText(currentFixture.getTeam2());
-
-
     }
 
     @Override
     public int getItemCount() {
         return mNumberItems;
     }
-
-
-
 
 }

@@ -10,22 +10,22 @@ public class Fixture {
     /**
      * Team1 of the fixture
      */
-    private String mTeam1;
+    private String team1;
 
     /**
      * Team2 of the fixture
      */
-    private String mTeam2;
+    private String team2;
 
     /**
      * Logo URL of Team1
      */
-    private String mTeam1Image;
+    private String team1Image;
 
     /**
      * Logo URL of Team2
      */
-      private String mTeam2Image;
+      private String team2Image;
 
     /**
      * Constructs a new {@link Fixture} object.
@@ -38,25 +38,25 @@ public class Fixture {
      */
 
     public Fixture(String team1, String team2, String team1Image, String team2Image) {
-        mTeam1 = team1;
-        mTeam2 = team2;
-        mTeam1Image = team1Image;
-        mTeam2Image = team2Image;
+        this.team1 = team1;
+        this.team2 = team2;
+        this.team1Image = team1Image;
+        this.team2Image = team2Image;
     }
 
     public String getTeam1() {
-        return mTeam1;
+        return team1;
     }
 
     public String getTeam2() {
-        return mTeam2;
+        return team2;
     }
 
     public String getTeam1Image() {
-        return mTeam1Image;
+        return team1Image;
     }
 
     public String getTeam2Image() {
-        return mTeam2Image;
+        return team2Image;
     }
 }

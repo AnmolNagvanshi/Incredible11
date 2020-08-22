@@ -1,6 +1,5 @@
 package com.example.anmolnagvanshi.incredible11;
 
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,8 +14,8 @@ public class HomeFixture extends AppCompatActivity implements FixtureRecycleAdap
             "https://d11api.000webhostapp.com/data.php";
 
 
-    private FixtureRecycleAdapter mAdapter;
-    private RecyclerView mRecyclerView;
+    private FixtureRecycleAdapter adapter;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -24,24 +23,19 @@ public class HomeFixture extends AppCompatActivity implements FixtureRecycleAdap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_fixture);
 
-        mRecyclerView = findViewById(R.id.rv_fixtures);
+        recyclerView = findViewById(R.id.rv_fixtures);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
         // Give the RecyclerView a default layout manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mAdapter = new FixtureRecycleAdapter(this, NUM_LIST_ITEMS, new ArrayList<Fixture>());
-        mRecyclerView.setAdapter(mAdapter);
-
-
-
+        adapter = new FixtureRecycleAdapter(this, NUM_LIST_ITEMS, new ArrayList<Fixture>());
+        recyclerView.setAdapter(adapter);
 
     }
-
-
 
     @Override
     public void onListItemClick(int clickedItemIndex) {

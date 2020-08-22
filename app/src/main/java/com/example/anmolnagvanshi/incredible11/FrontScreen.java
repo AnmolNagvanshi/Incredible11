@@ -22,16 +22,13 @@ public class FrontScreen extends AppCompatActivity {
     }
 
     public void letsPlay(View view) {
-
         Intent intent = new Intent(this, Home.class);
-
         startActivity(intent);
     }
 
     public void userLogIn(View view) {
         Intent intent = new Intent(this, LogIn.class);
-
         startActivity(intent);
-
     }
+
 }

@@ -3,13 +3,10 @@ package com.example.anmolnagvanshi.incredible11;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;

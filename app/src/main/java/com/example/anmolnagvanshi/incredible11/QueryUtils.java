@@ -1,7 +1,5 @@
 package com.example.anmolnagvanshi.incredible11;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -21,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from USGS.
+ * Helper methods related to requesting and receiving fixture data.
  */
 public final class QueryUtils {
 
@@ -37,7 +35,7 @@ public final class QueryUtils {
     }
 
     /**
-     * Query the USGS dataset and return a list of {@link Fixture} objects.
+     * Query the api and return a list of {@link Fixture} objects.
      */
     public static List<Fixture> fetchFixtureData(String requestUrl) {
         // Create URL object
@@ -51,10 +49,10 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link Fixture}s
         List<Fixture> fixtures = extractFeatureFromJson(jsonResponse);
 
-        // Return the list of {@link Earthquake}s
+        // Return the list of {@link Fixture}s
         return fixtures;
     }
 
@@ -159,7 +157,7 @@ public final class QueryUtils {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding fixtures to
         List<Fixture> fixtures = new ArrayList<>();
 
         // Try to parse the JSON response string. If there's a problem with the way the JSON
@@ -169,39 +167,25 @@ public final class QueryUtils {
 
             // Create a JSONObject from the JSON response string
 
-            // Extract the JSONArray associated with the key called "features",
-            // which represents a list of features (or earthquakes).
+
             JSONArray fixtureArray = new JSONArray(fixtureJSON);
 
-            // For each earthquake in the earthquakeArray, create an {@link Earthquake} object
+            // For each fixture in the earthquakeArray, create an {@link Fixture} object
             for (int i = 0; i < fixtureArray.length(); i++) {
 
-                // Get a single earthquake at position i within the list of earthquakes
+                // Get a single fixture at position i within the list of earthquakes
                 JSONObject currentFixture = fixtureArray.getJSONObject(i);
 
-                // For a given earthquake, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that earthquake.
-
-                // Extract the value for the key called "mag"
                 String team1 = currentFixture.getString("team1");
-
-                // Extract the value for the key called "place"
                 String team2 = currentFixture.getString("team2");
 
-                // Extract the value for the key called "time"
                 String team1Image = currentFixture.getString("team1url");
-
-                // Extract the value for the key called "url"
                 String team2Image = currentFixture.getString("team2url");
 
-
-
-                // Create a new {@link Earthquake} object with the magnitude, location, time,
-                // and url from the JSON response.
+                // Create a new {@link Fixture} object from the JSON response.
                 Fixture fixture = new Fixture(team1, team2, team1Image, team2Image);
 
-                // Add the new {@link Earthquake} to the list of earthquakes.
+                // Add the new {@link Fixture} to the list of fixtures.
                 fixtures.add(fixture);
             }
 
@@ -212,7 +196,7 @@ public final class QueryUtils {
             Log.e("QueryUtils", "Problem parsing the fixture JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of fixtures
         return fixtures;
     }
 
@@ -238,10 +222,7 @@ public final class QueryUtils {
                 String playerImageUrl = currentPlayer.getString("purl");
 
                 Player player = new Player(playerName, playerTeamName, playerQuality, playerImageUrl);
-
                 players.add(player);
-
-
             }
 
 

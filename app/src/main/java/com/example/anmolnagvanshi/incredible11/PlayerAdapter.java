@@ -1,10 +1,6 @@
 package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.InputStream;
 import java.util.List;
 
 public class PlayerAdapter extends ArrayAdapter<Player> {
@@ -34,10 +29,9 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
                     R.layout.player_list_item, parent, false);
         }
 
-        // Find the earthquake at the given position in the list of earthquakes
+        // Find the earthquake at the given position in the list of fixtures
         Player currentPlayer = getItem(position);
 
-        // Find the TextView with view ID magnitude
         TextView playerNameText = (TextView) listItemView.findViewById(R.id.playerNameText);
         String playerName = currentPlayer.getPlayerName();
         playerNameText.setText(playerName);
@@ -54,16 +48,9 @@ public class PlayerAdapter extends ArrayAdapter<Player> {
         String image = currentPlayer.getPlayerImage();
         GlideApp.with(getContext()).load(image).into(playerImageView);
 
-
-
-
-
         // Return the list item view that is now showing the appropriate data
         return listItemView;
     }
-
-
-
 
 }
 
