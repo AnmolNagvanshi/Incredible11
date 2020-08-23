@@ -2,7 +2,6 @@ package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Context;
 
-
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,14 +46,12 @@ public class FixtureAdapter extends ArrayAdapter<Fixture> {
                     R.layout.fixture_list_item_card, parent, false);
         }
 
-        // Find the earthquake at the given position in the list of earthquakes
+        // Find the fixture at the given position in the list of fixtures
         Fixture currentFixture = getItem(position);
 
-        // Find the TextView with view ID magnitude
         TextView homeTeamName = listItemView.findViewById(R.id.hTeamName);
-        // Format the magnitude to show 1 decimal place
+        assert currentFixture != null;
         String name1 = currentFixture.getTeam1();
-        // Display the magnitude of the current earthquake in that TextView
         homeTeamName.setText(name1);
 
         TextView awayTeamName = listItemView.findViewById(R.id.aTeamName);

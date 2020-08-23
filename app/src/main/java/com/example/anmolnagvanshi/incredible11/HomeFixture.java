@@ -14,7 +14,7 @@ public class HomeFixture extends AppCompatActivity implements FixtureRecycleAdap
             "https://d11api.000webhostapp.com/data.php";
 
 
-    private FixtureRecycleAdapter adapter;
+    private FixtureRecycleAdapter fixtureAdapter;
     private RecyclerView recyclerView;
 
 
@@ -32,8 +32,8 @@ public class HomeFixture extends AppCompatActivity implements FixtureRecycleAdap
         // Give the RecyclerView a default layout manager.
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new FixtureRecycleAdapter(this, NUM_LIST_ITEMS, new ArrayList<Fixture>());
-        recyclerView.setAdapter(adapter);
+        fixtureAdapter = new FixtureRecycleAdapter(this, NUM_LIST_ITEMS, new ArrayList<Fixture>());
+        recyclerView.setAdapter(fixtureAdapter);
 
     }
 

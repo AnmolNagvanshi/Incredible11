@@ -17,16 +17,14 @@ public class FixtureRecycleAdapter extends
         RecyclerView.Adapter<FixtureRecycleAdapter.FixtureViewHolder> {
 
     private static final String TAG = FixtureRecycleAdapter.class.getName();
-    private final ListItemClickListener mOnClickListener;
+    private final ListItemClickListener listItemClickListener;
     private static int viewHolderCount;
-    private int mNumberItems;
-    private List<Fixture> mFixtures;
-
+    private int numberItems;
+    private List<Fixture> fixtures;
 
     public interface ListItemClickListener {
         void onListItemClick(int clickedItemIndex);
     }
-
 
     class FixtureViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -43,26 +41,25 @@ public class FixtureRecycleAdapter extends
             awayTeam = itemView.findViewById(R.id.aTeamName);
             homeTeamImage = itemView.findViewById(R.id.hTeamView);
             awayTeamImage = itemView.findViewById(R.id.aTeamView);
-            // COMPLETED (7) Call setOnClickListener on the View passed into the constructor (use 'this' as the OnClickListener)
+            // COMPLETED (7) Call setOnClickListener on the View passed into the constructor
+            // (use 'this' as the OnClickListener)
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             int clickedPosition = getAdapterPosition();
-            mOnClickListener.onListItemClick(clickedPosition);
+            listItemClickListener.onListItemClick(clickedPosition);
 
         }
     }
 
-
     public FixtureRecycleAdapter(ListItemClickListener onClickListener, int numberItems, List<Fixture> fixtures) {
-        mOnClickListener = onClickListener;
-        mNumberItems = numberItems;
-        mFixtures= fixtures;
+        listItemClickListener = onClickListener;
+        this.numberItems = numberItems;
+        this.fixtures = fixtures;
         viewHolderCount = 0;
     }
-
 
     @NonNull
     @Override
@@ -82,15 +79,14 @@ public class FixtureRecycleAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull FixtureViewHolder fixtureViewHolder, int i) {
-        Fixture currentFixture = mFixtures.get(i);
-
+        Fixture currentFixture = fixtures.get(i);
         fixtureViewHolder.homeTeam.setText(currentFixture.getTeam1());
         fixtureViewHolder.awayTeam.setText(currentFixture.getTeam2());
     }
 
     @Override
     public int getItemCount() {
-        return mNumberItems;
+        return numberItems;
     }
 
 }

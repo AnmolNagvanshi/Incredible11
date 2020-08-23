@@ -34,7 +34,7 @@ public class Home extends AppCompatActivity {
         // Find a reference to the {@link ListView} in the layout
         ListView fixtureListView = findViewById(R.id.list);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of fixtures as input
         adapter = new FixtureAdapter(this, new ArrayList<Fixture>());
 
         // Set the adapter on the {@link ListView}
@@ -50,6 +50,7 @@ public class Home extends AppCompatActivity {
                 Fixture currentFixture = adapter.getItem(position);
 
                 Intent intent = new Intent(Home.this, PLayerSelection.class);
+                assert currentFixture != null;
                 String homeTeam = currentFixture.getTeam1();
                 String awayTeam = currentFixture.getTeam2();
                 String teams = homeTeam + "." + awayTeam;
@@ -59,8 +60,7 @@ public class Home extends AppCompatActivity {
             }
         });
 
-
-        // Start the AsyncTask to fetch the earthquake data
+        // Start the AsyncTask to fetch the fixture data
         FixtureAsyncTask task = new FixtureAsyncTask();
         task.execute(WEB_REQUEST_URL);
     }
@@ -115,7 +115,7 @@ public class Home extends AppCompatActivity {
             // Clear the adapter of previous fixture data
             adapter.clear();
 
-            // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+            // If there is a valid list of fixtures, then add them to the adapter's
             // data set. This will trigger the ListView to update.
             if (data != null && !data.isEmpty()) {
                 adapter.addAll(data);

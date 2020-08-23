@@ -114,7 +114,7 @@ public final class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the fixture JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -167,13 +167,12 @@ public final class QueryUtils {
 
             // Create a JSONObject from the JSON response string
 
-
             JSONArray fixtureArray = new JSONArray(fixtureJSON);
 
             // For each fixture in the earthquakeArray, create an {@link Fixture} object
             for (int i = 0; i < fixtureArray.length(); i++) {
 
-                // Get a single fixture at position i within the list of earthquakes
+                // Get a single fixture at position i within the list of fixtures
                 JSONObject currentFixture = fixtureArray.getJSONObject(i);
 
                 String team1 = currentFixture.getString("team1");

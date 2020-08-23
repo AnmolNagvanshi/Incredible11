@@ -2,7 +2,6 @@ package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
@@ -10,6 +9,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PLayerSelection extends AppCompatActivity {
 
@@ -17,17 +17,16 @@ public class PLayerSelection extends AppCompatActivity {
 
     private static final String PLAYER_REQUEST = "https://d11api.000webhostapp.com/tdetails.php/";
 
-    private PlayerAdapter mAdapter;
+    private PlayerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_selection);
-        getSupportActionBar().hide();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(Home.EXTRA_MESSAGE);
@@ -35,9 +34,9 @@ public class PLayerSelection extends AppCompatActivity {
 
         final ListView playerListView = (ListView) findViewById(R.id.playerList);
 
-        mAdapter = new PlayerAdapter(this, new ArrayList<Player>());
+        adapter = new PlayerAdapter(this, new ArrayList<Player>());
 
-        playerListView.setAdapter(mAdapter);
+        playerListView.setAdapter(adapter);
 
 //        Get the Intent that started this activity and extract the string
 
@@ -51,8 +50,6 @@ public class PLayerSelection extends AppCompatActivity {
 
         PlayerAsyncTask task = new PlayerAsyncTask();
         task.execute(PLAYER_REQUEST_URL);
-
-
     }
 
     private class PlayerAsyncTask extends AsyncTask<String, Void, List<Player>> {
@@ -71,10 +68,10 @@ public class PLayerSelection extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Player> data) {
 
-            mAdapter.clear();
+            adapter.clear();
 
             if (data != null && !data.isEmpty()) {
-                mAdapter.addAll(data);
+                adapter.addAll(data);
             }
         }
     }
