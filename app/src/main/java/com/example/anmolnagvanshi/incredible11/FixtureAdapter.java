@@ -2,7 +2,8 @@ package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Context;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * An {@link FixtureAdapter} knows how to create a list item layout for each fixture
  * in the data source (a list of {@link Fixture} objects).
- *
+ * <p>
  * These list item layouts will be provided to an adapter view like ListView
  * to be displayed to the user.
  */
@@ -24,7 +25,7 @@ public class FixtureAdapter extends ArrayAdapter<Fixture> {
     /**
      * Constructs a new {@link FixtureAdapter}.
      *
-     * @param context of the app
+     * @param context  of the app
      * @param fixtures is the list of fixtures, which is the data source of the adapter
      */
     public FixtureAdapter(Context context, List<Fixture> fixtures) {

@@ -3,9 +3,10 @@ package com.example.anmolnagvanshi.incredible11;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -18,11 +19,15 @@ public class Home extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfanapp.MESSAGE";
 
-    /** URL for fixture data from */
+    /**
+     * URL for fixture data from
+     */
     private static final String WEB_REQUEST_URL =
             "https://d11api.000webhostapp.com/data.php";
 
-    /** Adapter for the list of fixtures */
+    /**
+     * Adapter for the list of fixtures
+     */
     private FixtureAdapter adapter;
 
     @Override
@@ -80,11 +85,11 @@ public class Home extends AppCompatActivity {
     /**
      * {@link AsyncTask} to perform the network request on a background thread, and then
      * update the UI with the list of earthquakes in the response.
-     *
+     * <p>
      * AsyncTask has three generic parameters: the input type, a type used for progress updates, and
      * an output type. This task will take a String URL, and return a Fixture. Not providing,
      * progress updates,so the second generic is just Void.
-     *
+     * <p>
      * Only overriding two of the methods of AsyncTask: doInBackground() and onPostExecute().
      * The doInBackground() method runs on a background thread, so it can run long-running code
      * (like network activity), without interfering with the responsiveness of the app.

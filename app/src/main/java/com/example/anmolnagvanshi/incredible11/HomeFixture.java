@@ -1,22 +1,22 @@
 package com.example.anmolnagvanshi.incredible11;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class HomeFixture extends AppCompatActivity implements FixtureRecycleAdapter.ListItemClickListener{
+public class HomeFixture extends AppCompatActivity implements
+        FixtureRecycleAdapter.ListItemClickListener {
 
     private static final int NUM_LIST_ITEMS = 100;
     private static final String WEB_REQUEST_URL =
             "https://d11api.000webhostapp.com/data.php";
 
-
     private FixtureRecycleAdapter fixtureAdapter;
     private RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

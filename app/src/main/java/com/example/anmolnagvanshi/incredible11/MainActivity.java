@@ -1,9 +1,11 @@
 package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.WindowManager;
 
 import java.util.Objects;

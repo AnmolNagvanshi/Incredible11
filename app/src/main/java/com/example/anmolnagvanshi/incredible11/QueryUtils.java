@@ -23,7 +23,9 @@ import java.util.List;
  */
 public final class QueryUtils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /**
@@ -200,7 +202,6 @@ public final class QueryUtils {
     }
 
 
-
     private static List<Player> extractPlayerFromJson(String playerJson) {
         if (TextUtils.isEmpty(playerJson)) {
             return null;
@@ -211,7 +212,7 @@ public final class QueryUtils {
         try {
             JSONArray playerArray = new JSONArray(playerJson);
 
-            for(int i = 0; i < playerArray.length(); i++) {
+            for (int i = 0; i < playerArray.length(); i++) {
 
                 JSONObject currentPlayer = playerArray.getJSONObject(i);
 

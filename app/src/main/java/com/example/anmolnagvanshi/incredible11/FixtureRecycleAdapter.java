@@ -1,9 +1,11 @@
 package com.example.anmolnagvanshi.incredible11;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +68,7 @@ public class FixtureRecycleAdapter extends
     public FixtureViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.fixture_list_item_card;
-       // boolean shouldAttachToParentImmediately = false;
+        // boolean shouldAttachToParentImmediately = false;
 
         View view = LayoutInflater.from(context).inflate(layoutIdForListItem, viewGroup, false);
         FixtureViewHolder viewHolder = new FixtureViewHolder(view);

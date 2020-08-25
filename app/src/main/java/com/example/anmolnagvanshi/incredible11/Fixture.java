@@ -5,25 +5,17 @@ package com.example.anmolnagvanshi.incredible11;
  */
 public class Fixture {
 
-    /**
-     * Team1 of the fixture
-     */
+    // Team1 of the fixture
     private String team1;
 
-    /**
-     * Team2 of the fixture
-     */
+    // Team2 of the fixture
     private String team2;
 
-    /**
-     * Logo URL of Team1
-     */
+    // Logo URL of Team1
     private String team1Image;
 
-    /**
-     * Logo URL of Team2
-     */
-      private String team2Image;
+    // Logo URL of Team2
+    private String team2Image;
 
     public Fixture(String team1, String team2, String team1Image, String team2Image) {
         this.team1 = team1;
